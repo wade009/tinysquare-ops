@@ -27,11 +27,11 @@ var TableAjax = function () {
                 // execute some code on ajax data load
             },
             loadingMessage: 'Loading...',
-            dataTable: { // here you can define a typical datatable settings from http://datatables.net/usage/options 
+            dataTable: { // here you can define a typical datatable settings from http://datatables.net/usage/options
 
                 // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
-                // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/scripts/datatable.js). 
-                // So when dropdowns used the scrollable div should be removed. 
+                // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/scripts/datatable.js).
+                // So when dropdowns used the scrollable div should be removed.
                 //"dom": "<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r>t<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'>>",
                 "bStateSave": false, // 如果用户关闭页面后重新打开该页面，该列表会和关闭前的状态完全一样（长度，过滤，分页和排序）
                 "paging": true, //全局控制列表的翻页功能,如果设为false,所有的默认翻页
@@ -74,12 +74,38 @@ var TableAjax = function () {
                         "orderable": false
                     },
                     {
-                        "data": "category",
-                        "orderable": false
+                        "data": null,
+                        "orderable": false,
+                        "createdCell": function (nTd, sData, oData, iRow) {
+                            var category = sData.category;
+                            var value = "";
+                            switch (category) {
+                                case 1:
+                                    value = "normal";
+                                    break;
+                                case 2:
+                                    value = "shop";
+                                    break;
+                            }
+                            $(nTd).html(value);
+                        }
                     },
                     {
-                        "data": "status",
-                        "orderable": false
+                        "data": null,
+                        "orderable": false,
+                        "createdCell": function (nTd, sData, oData, iRow) {
+                            var status = sData.status;
+                            var value = "";
+                            switch (status) {
+                                case 0:
+                                    value = "normal";
+                                    break;
+                                case 1:
+                                    value = "invalid";
+                                    break;
+                            }
+                            $(nTd).html(value);
+                        }
                     }
                 ],
                 "processing": true,
