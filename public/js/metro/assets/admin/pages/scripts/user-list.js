@@ -106,6 +106,18 @@ var TableAjax = function () {
                             }
                             $(nTd).html(value);
                         }
+                    },
+                    {
+                        "data": "entrydate",
+                        "orderable": false
+                    },
+                    {
+                        "data": null,
+                        "orderable": false,
+                        "createdCell": function (nTd, sData, oData, iRow) {
+
+                            $(nTd).html("");
+                        }
                     }
                 ],
                 "processing": true,
