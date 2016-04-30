@@ -303,7 +303,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <th width="2%">
                                             <input type="checkbox" class="group-checkable">
                                         </th>
-                                        <th width="5%">
+                                        <th width="15%">
                                             Account
                                         </th>
                                         <th width="15%">
@@ -312,17 +312,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <th width="25%">
                                             Token
                                         </th>
-                                        <th width="5%">
-                                            Ship&nbsp;To
-                                        </th>
-                                        <th width="5%">
-                                            Price
-                                        </th>
-                                        <th width="5%">
-                                            Amount
+                                        <th width="10%">
+                                            category
                                         </th>
                                         <th width="10%">
-                                            Status
+                                            status
+                                        </th>
+                                        <th width="10%">
+                                            entrydate
                                         </th>
                                         <th width="10%">
                                             Actions
@@ -332,48 +329,33 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <td>
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control form-filter input-sm" name="order_id">
+                                            <input type="text" class="form-control form-filter input-sm" name="account">
                                         </td>
                                         <td>
-                                            <div class="input-group date date-picker margin-bottom-5" data-date-format="dd/mm/yyyy">
-                                                <input type="text" class="form-control form-filter input-sm" readonly name="order_date_from" placeholder="From">
-											<span class="input-group-btn">
-											<button class="btn btn-sm default" type="button"><i class="fa fa-calendar"></i></button>
-											</span>
-                                            </div>
-                                            <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
-                                                <input type="text" class="form-control form-filter input-sm" readonly name="order_date_to" placeholder="To">
-											<span class="input-group-btn">
-											<button class="btn btn-sm default" type="button"><i class="fa fa-calendar"></i></button>
-											</span>
-                                            </div>
+                                            <input type="text" class="form-control form-filter input-sm" name="email">
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control form-filter input-sm" name="order_customer_name">
+                                            <input type="text" class="form-control form-filter input-sm" name="token">
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control form-filter input-sm" name="order_ship_to">
-                                        </td>
-                                        <td>
-                                            <div class="margin-bottom-5">
-                                                <input type="text" class="form-control form-filter input-sm" name="order_price_from" placeholder="From"/>
-                                            </div>
-                                            <input type="text" class="form-control form-filter input-sm" name="order_price_to" placeholder="To"/>
-                                        </td>
-                                        <td>
-                                            <div class="margin-bottom-5">
-                                                <input type="text" class="form-control form-filter input-sm margin-bottom-5 clearfix" name="order_quantity_from" placeholder="From"/>
-                                            </div>
-                                            <input type="text" class="form-control form-filter input-sm" name="order_quantity_to" placeholder="To"/>
-                                        </td>
-                                        <td>
-                                            <select name="order_status" class="form-control form-filter input-sm">
+                                            <select name="category" class="form-control form-filter input-sm">
                                                 <option value="">Select...</option>
-                                                <option value="pending">Pending</option>
-                                                <option value="closed">Closed</option>
-                                                <option value="hold">On Hold</option>
-                                                <option value="fraud">Fraud</option>
+                                                <option value="0">normal</option>
+                                                <option value="1">shop</option>
                                             </select>
+                                        </td>
+                                        <td>
+                                            <select name="status" class="form-control form-filter input-sm">
+                                                <option value="">Select...</option>
+                                                <option value="0">normal</option>
+                                                <option value="1">invalid</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <div class="margin-bottom-5">
+                                                <input type="text" class="form-control form-filter input-sm margin-bottom-5 clearfix" name="entrydate_from" placeholder="From"/>
+                                            </div>
+                                            <input type="text" class="form-control form-filter input-sm" name="entrydate_to" placeholder="To"/>
                                         </td>
                                         <td>
                                             <div class="margin-bottom-5">
@@ -1080,7 +1062,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="/js/metro/assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
 <script src="/js/metro/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
 <script src="/js/metro/assets/global/scripts/datatable.js"></script>
-<script src="/js/metro/assets/admin/pages/scripts/table-ajax.js"></script>
+<script src="/js/metro/assets/admin/pages/scripts/user-list.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
     jQuery(document).ready(function() {
