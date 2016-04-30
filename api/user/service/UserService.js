@@ -1,9 +1,9 @@
 var user = require('../../../entity/User');
 var pageUtil = require('../../../util/PageUtil');
 
-function findAll(pageNum, pageSize) {
+function findAll(condition, pageNum, pageSize) {
     var condtions = {
-        "where": {},
+        "where": createWhere(condition),
         "order": "entrydate desc",
         "offset": pageUtil.getPageBegin(pageNum, pageSize),
         "limit": pageSize
@@ -11,11 +11,25 @@ function findAll(pageNum, pageSize) {
     return user.findAll(condtions);
 }
 
-function countAll(){
+function countAll(condition) {
     var condtions = {
-        "where": {}
+        "where": createWhere(condition)
     };
     return user.count(condtions);
+}
+
+function createWhere(condition) {
+    var where = {};
+    if (condition.account != null && condition.account != "") {
+        where.account = condition.account;
+    }
+    if (condition.email != null && condition.email != "") {
+        where.email = condition.email;
+    }
+    if (condition.token != null && condition.token != "") {
+        where.token = condition.token;
+    }
+    return where;
 }
 
 exports.findAll = findAll;

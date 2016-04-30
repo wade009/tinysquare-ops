@@ -35,7 +35,7 @@ var TableAjax = function () {
                 //"dom": "<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r>t<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'>>",
                 "bStateSave": false, // 如果用户关闭页面后重新打开该页面，该列表会和关闭前的状态完全一样（长度，过滤，分页和排序）
                 "paging": true, //全局控制列表的翻页功能,如果设为false,所有的默认翻页
-                "searching": false,//控制控件的搜索功能
+                "searching": true,//控制控件的搜索功能
                 "serverSide": true,
                 "lengthMenu": [
                     [10, 20, 50, 100, 150, -1],
@@ -49,11 +49,24 @@ var TableAjax = function () {
                         d.page = (table != undefined) ? table.page.info().page : 0;
                         d.size = (table != undefined) ? table.page.info().length : 10;
                         //d.sort = d.columns[d.order[0].column].data + ',' + d.order[0].dir;
-
-                        d.status = 1;
-                        delete d.columns;
-                        delete d.search;
-                        delete d.order;
+                        d.account = $("#account").val();
+                        d.email = $("#email").val();
+                        d.token = $("#token").val();
+                        d.category = $("#category").val();
+                        d.status = $("#status").val();
+                        var from = $("#from").val();
+                        if(from != null && from != ""){
+                            from = from.replace(/-/g,"/");
+                        }
+                        d.from = from;
+                        var to = $("#to").val();
+                        if(to != null && to != ""){
+                            to = to.replace(/-/g,"/");
+                        }
+                        d.to = to;
+                        //delete d.columns;
+                        //delete d.search;
+                        //delete d.order;
                     }
                 },
                 "columns": [

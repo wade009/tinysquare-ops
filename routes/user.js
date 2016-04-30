@@ -17,9 +17,17 @@ router.post('/list', function (req, res, next) {
     pageNum = pageNum + 1;
     var pageSize = req.body.size;
     pageSize = parseInt(pageSize, 10);
-    co(function *() {
-        var users = yield userService.findAll(pageNum, pageSize);
-        var totalCount = yield userService.countAll();
+    var condition = {
+        account: req.body.account,
+        email: req.body.email,
+        token: req.body.token,
+        from: req.body.from,
+        to: req.body.to
+    }
+    console.log(condition);
+    co(function * (){
+        var users = yield userService.findAll(condition, pageNum, pageSize);
+        var totalCount = yield userService.countAll(condition);
         var result = {
             "draw": req.body.draw,
             "data": users,
