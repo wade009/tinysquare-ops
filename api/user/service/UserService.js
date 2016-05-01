@@ -29,6 +29,13 @@ function createWhere(condition) {
     if (condition.token != null && condition.token != "") {
         where.token = condition.token;
     }
+    if (condition.from != null && condition.from != "" && condition.to != null && condition.to) {
+        console.log(end);
+        where.entrydate = {
+            "gte": new Date(condition.from),
+            "lte": new Date(condition.to)
+        };
+    }
     return where;
 }
 

@@ -57,11 +57,13 @@ var TableAjax = function () {
                         var from = $("#from").val();
                         if(from != null && from != ""){
                             from = from.replace(/-/g,"/");
+                            from += " 00:00:00.000";
                         }
                         d.from = from;
                         var to = $("#to").val();
                         if(to != null && to != ""){
                             to = to.replace(/-/g,"/");
+                            to += " 23:59:59.999";
                         }
                         d.to = to;
                         //delete d.columns;
