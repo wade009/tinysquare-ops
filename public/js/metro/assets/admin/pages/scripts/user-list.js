@@ -36,6 +36,7 @@ var TableAjax = function () {
                 //"dom": "<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r>t<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'>>",
                 "bStateSave": false, // 如果用户关闭页面后重新打开该页面，该列表会和关闭前的状态完全一样（长度，过滤，分页和排序）
                 "paging": true, //全局控制列表的翻页功能,如果设为false,所有的默认翻页
+                "lengthChange": false,
                 "searching": true,//控制控件的搜索功能
                 "serverSide": true,
                 "lengthMenu": [
@@ -88,12 +89,11 @@ var TableAjax = function () {
                         "orderable": false
                     },
                     {
-                        "data": null,
+                        "data": "category",
                         "orderable": false,
                         "createdCell": function (nTd, sData, oData, iRow) {
-                            var category = sData.category;
                             var value = "";
-                            switch (category) {
+                            switch (sData) {
                                 case 1:
                                     value = "normal";
                                     break;
@@ -105,12 +105,11 @@ var TableAjax = function () {
                         }
                     },
                     {
-                        "data": null,
+                        "data": "status",
                         "orderable": false,
                         "createdCell": function (nTd, sData, oData, iRow) {
-                            var status = sData.status;
                             var value = "";
-                            switch (status) {
+                            switch (sData) {
                                 case 0:
                                     value = "normal";
                                     break;
@@ -123,7 +122,14 @@ var TableAjax = function () {
                     },
                     {
                         "data": "entrydate",
-                        "orderable": false
+                        "orderable": false,
+                        "createdCell": function (nTd, sData, oData, iRow) {
+                            var value = "";
+                            if(sData != null && sData != ""){
+                                value = dateString(sData);
+                            }
+                            $(nTd).html(value);
+                        }
                     },
                     {
                         "data": null,
@@ -135,7 +141,7 @@ var TableAjax = function () {
                     }
                 ],
                 "processing": true,
-                "pagingType": "full_numbers",
+                //"pagingType": "full_numbers",
                 "order": [
                     [1, "asc"]
                 ]// set first column as a default sort by asc
