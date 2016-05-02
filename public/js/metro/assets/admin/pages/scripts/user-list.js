@@ -1,3 +1,4 @@
+//require common/datautil.js
 var TableAjax = function () {
 
     var initPickers = function () {
@@ -55,15 +56,13 @@ var TableAjax = function () {
                         d.category = $("#category").val();
                         d.status = $("#status").val();
                         var from = $("#from").val();
-                        if(from != null && from != ""){
-                            from = from.replace(/-/g,"/");
-                            from += " 00:00:00.000";
+                        if (from != null && from != "") {
+                            from = datautil.getDateMin(from);
                         }
                         d.from = from;
                         var to = $("#to").val();
-                        if(to != null && to != ""){
-                            to = to.replace(/-/g,"/");
-                            to += " 23:59:59.999";
+                        if (to != null && to != "") {
+                            to = datautil.getDateMin(to);
                         }
                         d.to = to;
                         //delete d.columns;
