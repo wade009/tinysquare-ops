@@ -57,12 +57,12 @@ var TableAjax = function () {
                         d.status = $("#status").val();
                         var from = $("#from").val();
                         if (from != null && from != "") {
-                            from = datautil.getDateMin(from);
+                            from = dateMinString(from);
                         }
                         d.from = from;
                         var to = $("#to").val();
                         if (to != null && to != "") {
-                            to = datautil.getDateMin(to);
+                            to = dateMaxString(to);
                         }
                         d.to = to;
                         //delete d.columns;
